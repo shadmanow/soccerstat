@@ -12,13 +12,15 @@ const useStyles = makeStyles((theme) => ({
   mainContainer: {
     backgroundColor: theme.palette.grey[300],
     width: '100%',
-    height: '100vh'
+    height: 'auto',
+    minHeight: '100vh',
   },
   innerContainer:{
     backgroundColor: theme.palette.background.default,
     padding: 0,
     width: '100%',
-    height: '100vh'
+    height: '100%',
+    minHeight: '100vh',
   },
   container: {
     padding: 0
