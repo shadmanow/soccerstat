@@ -10,7 +10,7 @@ import {App} from './App';
 
 ReactDOM.render(
   <MuiPickersUtilsProvider utils={DateFnsUtils}>
-    <Router basename={process.env.REACT_APP_GH_URL}>
+    <Router>
       <App/>
     </Router>
   </MuiPickersUtilsProvider>,
