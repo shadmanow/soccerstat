@@ -26,10 +26,13 @@ export const App = () => {
           <Route exact path='/leagues/:id/teams' component={LeagueTeams}/>
           <Route
             exact
-            path={['/leagues/:id/matches', '/leagues/team/:id/matches']}
+            path={[
+              '/leagues/:id/matches',
+              '/leagues/team/:id/matches'
+            ]}
             component={LeagueMatches}
           />
-          <Route component={Page404} />
+          <Route component={Page404}/>
         </Switch>
       </Container>
     </Container>
