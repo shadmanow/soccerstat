@@ -10,14 +10,41 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(1),
     },
+
+    [theme.breakpoints.between('xs', 'md')]: {
+      padding: 0,
+      flexWrap: 'nowrap',
+      '& > *': {
+        margin: theme.spacing(1, 0.2, 1, 0.2),
+      },
+    },
+  },
+  container: {
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'center',
+    }
+  },
+  text: {
+    [theme.breakpoints.up('md')]: {
+      fontSize: 12
+    },
+    [theme.breakpoints.between('xs', 'md')]: {
+      fontSize: 10
+    },
+  },
+  date: {
+    [theme.breakpoints.between('md', 'xl')]: {
+      fontSize: 13
+    },
+    [theme.breakpoints.between('xs', 'md')]: {
+      fontSize: 12
+    },
   },
   status: {
-    ...theme.typography.button,
     backgroundColor: theme.palette.warning.light,
     color: theme.palette.warning.contrastText,
     borderRadius: 2,
     padding: theme.spacing(1),
-    fontSize: theme.typography.fontSize - 3
   }
 }));
 
@@ -65,32 +92,34 @@ export const LeagueMatch = ({match}) => {
           justify='center'
           alignItems='center'
           xs={12}
-          sm={12}
-          md={3}
+          sm={3}
+          md={2}
         >
-          <Typography noWrap>{date}</Typography>
+          <Typography noWrap className={classes.date}>{date}</Typography>
         </Grid>
         <Grid
           item
           container
           alignItems='center'
-          xs={10}
-          sm={11}
-          md={7}
-          className={classes.innerContainer}
+          xs={12}
+          sm={8}
+          md={8}
+          className={`${classes.innerContainer} ${classes.container}`}
         >
           <Button
             variant="contained"
             size='small'
+            className={classes.text}
             color={winner === 'HOME_TEAM' ? 'secondary' : 'primary'}
             onClick={handleHomeTeamClick}
           >
             {homeTeam.name || 'NO TEAM'}
           </Button>
-          <Typography variant='h6'>
+          <Typography variant='h6' className={classes.text} noWrap>
             {homeTeamGoals}-{awayTeamGoals}
           </Typography>
           <Button
+            className={classes.text}
             variant="contained"
             size='small'
             color={winner === 'AWAY_TEAM' ? 'secondary' : 'primary'}
@@ -104,14 +133,14 @@ export const LeagueMatch = ({match}) => {
           container
           justify='flex-end'
           alignItems='center'
-          xs={2}
+          xs={12}
           sm={1}
           md={2}
+          className={classes.container}
         >
           <Typography
             variant='button'
-            color='secondary'
-            className={classes.status}
+            className={`${classes.text} ${classes.status}`}
           >
             {winner || 'NO WINNER'}
           </Typography>
