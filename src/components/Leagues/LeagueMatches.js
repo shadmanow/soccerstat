@@ -88,12 +88,16 @@ export const LeagueMatches = ({location}) => {
   return (
     <Grid container className={classes.container}>
 
-      <Container className={classes.innerContainer}>
-        <DateRangeSearch/>
-        {loadingTeamOrLeague && <Loader/>}
-        {!loadingTeamOrLeague && team && <LeagueTeam team={team} xs={7} md={7}/>}
-        {!loadingTeamOrLeague && league && <League league={league} xs={7} md={7}/>}
-      </Container>
+      <Grid item container className={classes.innerContainer} spacing={2}>
+        <Grid item xs={12} md={6} sm={6}>
+          <DateRangeSearch/>
+        </Grid>
+        <Grid item container xs={12} md={6} sm={6}>
+          {loadingTeamOrLeague && <Loader/>}
+          {!loadingTeamOrLeague && team && <LeagueTeam team={team} xs={12} md={12}/>}
+          {!loadingTeamOrLeague && league && <League league={league} xs={12} md={12}/>}
+        </Grid>
+      </Grid>
 
       {loadingTeams && <Loader/>}
 

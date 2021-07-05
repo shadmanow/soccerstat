@@ -10,6 +10,7 @@ export const useItemStyles = makeStyles((theme) => ({
     '& > *': {
       margin: 5,
     },
+    height: '100%'
   },
   imageButton: {
     width: 70,
