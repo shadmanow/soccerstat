@@ -6,6 +6,7 @@ import {League} from './League';
 import StringYearSearch from '../StringYearSearch/StringYearSearch';
 import {PaginationContainer} from '../PaginationContainer/PaginationContainer';
 import {Loader} from '../Loader/Loader';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -82,6 +83,10 @@ export const Leagues = ({location}) => {
         <PaginationContainer count={12}>
           {filtered.map(league => <League key={league.id} league={league}/>)}
         </PaginationContainer>
+      }
+
+      {
+        !loading && !filtered.length && <Typography>No leagues</Typography>
       }
 
     </Grid>

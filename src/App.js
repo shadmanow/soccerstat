@@ -8,7 +8,18 @@ import {LeagueMatches} from './components/Leagues/LeagueMatches';
 import {LeagueTeams} from './components/Leagues/LeagueTeams';
 import {Page404} from './components/Page404/Page404';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+    backgroundColor: theme.palette.grey[300],
+    width: '100%',
+    height: '100vh'
+  },
+  innerContainer:{
+    backgroundColor: theme.palette.background.default,
+    padding: 0,
+    width: '100%',
+    height: '100vh'
+  },
   container: {
     padding: 0
   }
@@ -17,23 +28,25 @@ const useStyles = makeStyles(() => ({
 export const App = () => {
   const classes = useStyles();
   return (
-    <Container maxWidth="md" className={classes.container}>
-      <Header/>
-      <Container className={classes.container}>
-        <Switch>
-          <Redirect exact from='/' to='/leagues'/>
-          <Route exact path='/leagues' component={Leagues}/>
-          <Route exact path='/leagues/:id/teams' component={LeagueTeams}/>
-          <Route
-            exact
-            path={[
-              '/leagues/:id/matches',
-              '/leagues/team/:id/matches'
-            ]}
-            component={LeagueMatches}
-          />
-          <Route component={Page404}/>
-        </Switch>
+    <Container maxWidth='xl' className={classes.mainContainer}>
+      <Container maxWidth="md" className={classes.innerContainer}>
+        <Header/>
+        <Container className={classes.container}>
+          <Switch>
+            <Redirect exact from='/' to='/leagues'/>
+            <Route exact path='/leagues' component={Leagues}/>
+            <Route exact path='/leagues/:id/teams' component={LeagueTeams}/>
+            <Route
+              exact
+              path={[
+                '/leagues/:id/matches',
+                '/leagues/team/:id/matches'
+              ]}
+              component={LeagueMatches}
+            />
+            <Route component={Page404}/>
+          </Switch>
+        </Container>
       </Container>
     </Container>
   )
