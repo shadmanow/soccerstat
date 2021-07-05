@@ -62,19 +62,19 @@ export const LeagueMatches = ({location}) => {
   useEffect(() => {
     (async () => {
       if (pathname.includes('/team/')) {
-        const team = await getTeamOrLeague(`http://api.football-data.org/v2/teams/${id}`);
+        const team = await getTeamOrLeague(`https://api.football-data.org/v2/teams/${id}`);
         setLeague(null);
         setTeam(team);
 
-        const {matches} = await getTeams(`http://api.football-data.org/v2/teams/${id}/matches`);
+        const {matches} = await getTeams(`https://api.football-data.org/v2/teams/${id}/matches`);
         setMatches(matches);
         setFiltered(filterMatches(search, matches));
       } else {
-        const league = await getTeamOrLeague(`http://api.football-data.org/v2/competitions/${id}`);
+        const league = await getTeamOrLeague(`https://api.football-data.org/v2/competitions/${id}`);
         setLeague(league);
         setTeam(null);
 
-        const {matches} = await getTeams(`http://api.football-data.org/v2/competitions/${id}/matches`);
+        const {matches} = await getTeams(`https://api.football-data.org/v2/competitions/${id}/matches`);
         setMatches(matches);
         setFiltered(filterMatches(search, matches));
       }

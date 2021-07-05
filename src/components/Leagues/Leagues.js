@@ -58,7 +58,7 @@ export const Leagues = ({location}) => {
   useEffect(() => {
     (async () => {
       try {
-        const {competitions} = await get('http://api.football-data.org/v2/competitions?plan=TIER_ONE');
+        const {competitions} = await get('https://api.football-data.org/v2/competitions?plan=TIER_ONE');
         setCompetitions(competitions);
          setFiltered(filterLeagues(search, competitions));
       } catch (e) {

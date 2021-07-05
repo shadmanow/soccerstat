@@ -53,7 +53,7 @@ export const LeagueTeams = ({location}) => {
   useEffect(() => {
     (async () => {
       try {
-        const {teams} = await get(`http://api.football-data.org/v2/competitions/${id}/teams`);
+        const {teams} = await get(`https://api.football-data.org/v2/competitions/${id}/teams`);
         setTeams(teams);
         setFiltered(filterTeams(search, teams));
       } catch (e) {
